@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeographicInfoService } from 'src/app/services/geographic-info/geographic-info.service';
 
 @Component({
   selector: 'app-city-search',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CitySearchComponent implements OnInit {
 
-  constructor() { }
+  cosa: any;
+
+  constructor(private GeographicInfoService: GeographicInfoService) { }
 
   ngOnInit(): void {
+    this.GeographicInfoService.getGeographicInfo().subscribe(response =>{      
+      this.cosa = response;
+      console.log(this.cosa);
+     });
   }
 
 }
