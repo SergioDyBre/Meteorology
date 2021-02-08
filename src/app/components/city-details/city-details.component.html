@@ -1,0 +1,37 @@
+<div>
+    <div class="row">
+      
+            <h3 class="ml-4"> Información general</h3> 
+     
+
+            <button type="button" class="btn btn-primary btn-sm m-2" (click)="redirect()">Volver a buscar</button>
+
+
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">Nombre: {{city.asciiName}}</li>
+        <li class="list-group-item">Norte: {{city.bbox.north}}</li>
+        <li class="list-group-item">Sur: {{city.bbox.south}}</li>
+        <li class="list-group-item">Este: {{city.bbox.east}}</li>
+        <li class="list-group-item">Oeste: {{city.bbox.west}}</li>
+        <li class="list-group-item">Longitud: {{city.lng}}</li>
+        <li class="list-group-item">Latitud: {{city.lat}}</li>
+        <li class="list-group-item">Codigo del país: {{city.countryCode}}</li>
+    </ul>
+</div>
+<div>
+    <h3 class="m-2">Termómetro</h3>
+    <p *ngIf="temperature>0 && temperature<54">
+        <ngb-progressbar [value]="temperature" type="info"></ngb-progressbar>
+    </p>
+    <p *ngIf="temperature>54 && temperature<70">
+        <ngb-progressbar [value]="temperature" type="success"></ngb-progressbar>
+    </p>
+    <p *ngIf="temperature>70 && temperature<100">
+        <ngb-progressbar [value]="temperature" type="danger"></ngb-progressbar>
+    </p>
+</div>
+<div>
+    <h3 class="m-2">Mapa</h3>
+    <div id="map" class="map"></div>
+</div>

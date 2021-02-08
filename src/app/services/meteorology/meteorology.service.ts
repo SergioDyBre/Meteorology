@@ -8,30 +8,11 @@ export class MeteorologyService {
 
   constructor(private http: HttpClient) { }
 
-  url = "http://api.geonames.org/weather";
+  url = "http://api.geonames.org/weatherJSON";
 
-  north = 0;
+  username = "ilgeonamessample"
 
-  south = 0;
-
-  east = 0;
-
-  west = 0;
-
-  username = "demo"
-
-  requestBody = {
-    "filter": {
-      "north": this.north,
-      "south": this.south,
-      "east": this.east,
-      "west": this.west
-    },
-    "columns": ["temperature"]
-  };
-
-
-  getGeographicInfo() {
-    return this.http.post(this.url, JSON.stringify(this.requestBody));
+  getMeteorologyInfo(north:any, south:any, east:any, west:any) {
+    return this.http.get(`${this.url}?north=${44.1}&south=${9.9}&east=${22.4}&west=${55.2}&username=${this.username}`);
   }
 }

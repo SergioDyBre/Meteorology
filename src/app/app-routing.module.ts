@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CityHistoricalComponent } from './components/city-historical/city-historical.component';
+import { AppComponent } from './app.component';
+import { CityDetailsComponent } from './components/city-details/city-details.component';
 import { CitySearchComponent } from './components/city-search/city-search.component';
 
+
 const routes: Routes = [
-  { path: 'search', component: CitySearchComponent },
-  { path: 'historical', component: CityHistoricalComponent },
+  { path: '', component: CitySearchComponent },
+
+  { path: 'details', component: CityDetailsComponent }
 ];
 
 @NgModule({

@@ -10,9 +10,7 @@ export class GeographicInfoService {
 
   constructor(private http: HttpClient) { }
 
-  url = "http://api.geonames.org/search";
-
-  q = "";
+  url = "http://api.geonames.org/searchJSON";
 
   maxRows = 20;
 
@@ -24,23 +22,12 @@ export class GeographicInfoService {
 
   style = "FULL";
 
-  username = "demo"
-
-  requestBody = {
-    "filter": {
-      "q": this.q,
-      "maxRows": this.maxRows,
-      "startRow": 0,
-      "lang": this.lang,
-      "isNameRequired": this.lang,
-      "style": this.style
-    },
-    "columns": ["timezone", "bbox", "asciiName", "lat", "lng"]
-  };
+  username = "ilgeonamessample"
 
 
-  getGeographicInfo() {
-    return this.http.post(this.url, JSON.stringify(this.requestBody));
+
+  getGeographicInfo(city:any) {
+    return this.http.get(`${this.url}?q=${city}&maxRows=${this.maxRows}&startRow=${this.startRow}&lang=${this.lang}&isNameRequired=${this.isNameRequired}&style=${this.style}&username=${this.username}`);
   }
 
 

@@ -1,1 +1,20 @@
-<p>city-search works!</p>
+<div class="jumbotron">
+    <h1 class="display-3">Bienvenido a tu aplicación del tiempo favorita</h1>
+    <hr class="my-4">
+    <form class="form-inline my-2 my-lg-0">
+        <input #cityInput class="form-control mr-sm-2" type="text" placeholder="Ciudad" (keyup)="onSearchButtonPressed()">
+        <div ngbDropdown>
+            <a class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Últimas búsquedas</a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <a *ngFor="let result of cookieList" ngbDropdownItem (click)="onSearchButtonPressed(result)">{{result}}</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <div *ngIf="results">
+        <ul>
+            <li *ngFor="let result of results"><button type="button" class="btn btn-primary btn-sm m-2" (click)="onLinkCityPressed(result)">{{result.asciiName}}</button> </li>
+        </ul>
+    </div>
+</div>
